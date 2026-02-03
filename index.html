@@ -1,19 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VisioPhobos</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+/* BOTÃO */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+/* VIRA X */
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: #0a0a0a;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s;
+        z-index: 2000;
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav a {
+        font-size: 22px;
+        margin: 18px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: relative;
+    }
+
+    /* QUANDO MENU ABERTO */
+    .menu-toggle.active {
+        position: fixed;
+        top: 25px;
+        left: 25px;
+    }
+}
+
+
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            
-            <!-- <div class="logo">
-                <img src="logo.png" alt="Logo VisioPhobos">
-                <span>VisioPhobos</span>
-            </div> -->
+
+<header>
+    <div class="container header-content">
 
         <div class="logo">
             <div class="logo-icon">
@@ -25,31 +96,37 @@
             </div>
         </div>
 
-
-            <nav>
-                <a href="#sobre">Empresa</a>
-                <a href="#servicos">Soluções</a>
-                <a href="#cameras">Modelos</a>
-                <a href="#contato">Contato</a>
-                <a href="https://wa.me/5512996508535" target="_blank" class="nav-cta">Orçamento</a>
-            </nav>
-
+        <!-- BOTÃO HAMBURGUER -->
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Soluções Inteligentes em CFTV para Proteger o que é Seu</h2>
-            <p>
-                Projetos profissionais de monitoramento para residências, comércios e indústrias.
-                Instalação estratégica, acesso remoto e suporte técnico especializado no Vale do Paraíba.
-            </p>
-            <div class="hero-buttons">
-                <a href="https://wa.me/5512996508535" target="_blank" class="btn">Solicitar Orçamento</a>
-                <a href="#projetos" class="btn-outline">Ver Projetos</a>
-            </div>
+        <nav id="nav">
+            <a href="#sobre">Empresa</a>
+            <a href="#servicos">Soluções</a>
+            <a href="#cameras">Modelos</a>
+            <a href="#contato">Contato</a>
+            <a href="https://wa.me/5512996508535" target="_blank" class="nav-cta">Orçamento</a>
+        </nav>
+
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Soluções Inteligentes em CFTV para Proteger o que é Seu</h2>
+        <p>
+            Projetos profissionais de monitoramento para residências, comércios e indústrias.
+            Instalação estratégica, acesso remoto e suporte técnico especializado no Vale do Paraíba.
+        </p>
+        <div class="hero-buttons">
+            <a href="https://wa.me/5512996508535" target="_blank" class="btn">Solicitar Orçamento</a>
+            <a href="#projetos" class="btn-outline">Ver Projetos</a>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="sobre" class="section">
         <div class="container">
@@ -146,7 +223,7 @@
     <section class="cta">
         <h2>Precisa proteger seu patrimônio?</h2>
         <p>Solicite uma avaliação técnica e receba um orçamento personalizado.</p>
-        <a href="https://wa.me/5512996508535" target="_blank" class="btn">Falar no WhatsApp Agora</a>
+        <a href="https://wa.me/55SEUNUMEROAQUI" target="_blank" class="btn">Falar no WhatsApp Agora</a>
     </section>
 
     <section id="contato" class="section dark">
@@ -161,6 +238,19 @@
     <footer>
         <p>© 2026 VisioPhobos | CNPJ 64.614.106/0001-68 | Todos os direitos reservados</p>
     </footer>
+
+<!-- SCRIPT DO MENU -->
+<script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav");
+
+    menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        nav.classList.toggle("active");
+    });
+</script>
+
+
         
 </body>
 </html>
